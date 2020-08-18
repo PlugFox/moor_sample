@@ -68,6 +68,7 @@ class Repository {
           ..limit(1)
           ..orderBy([(t) => OrderingTerm.desc(t.id)])
         ).getSingle();
+      if (date == null) return '<none>';
       final attributes = await (_database.select(_database.attributesTable)
           ..where((tbl) => tbl.table.equals('dates') & tbl.id.equals(date.id)))
           .get();
